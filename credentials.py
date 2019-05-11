@@ -38,7 +38,7 @@ class Credentials:
     @classmethod
     def find_account_name(cls, account_name):
         """
-        This method takes in class and account_name.
+        This class method takes in class and account_name.
         This method uses a for loop to loop throught the content of class
         variable, credentials and finally checks if either of the values
         that are returned are equal to account_name passed in.
@@ -48,4 +48,13 @@ class Credentials:
                 return credential
 
 
-    
+    @classmethod
+    def credential_exists(cls, account_name):
+        """
+        This class method compares the account_name received from an instance 
+        with all account_name keys on class variable, credentials.
+        Returns a bool value if there is a match, True
+        """
+        for credential in cls.credentials:
+            if credential.account_name == account_name:
+                return True
