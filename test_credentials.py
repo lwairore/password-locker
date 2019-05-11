@@ -111,6 +111,15 @@ class TestCredentials(unittest.TestCase):
         test_sharon_credential.save_credential()
         self.assertEqual(Credentials.display_credentials(), Credentials.credentials)
 
+    def test_copy_user_name(self):
+        """
+        This method uses pyperclip() method to compare the 
+        value that it copies to the actual value
+        """
+        test_lucas_credential = Credentials("Lucas Abraham", "Bingo", "0712")
+        Credentials.copy_user_name("Bingo")
+        self.assertEqual(test_lucas_credential.user_name, pyperclip.paste())
+
 
 
 if __name__ == "__main__":
