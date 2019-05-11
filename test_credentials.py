@@ -12,7 +12,7 @@ class TestCredentials(unittest.TestCase):
     """
 
     def setUp(self):
-        self.creadentials_test = Credentials("lwairore", "Yahoo", "4280")
+        self.credentials_test = Credentials("lwairore", "Yahoo", "4280")
 
     def tearDown(self):
         """
@@ -29,7 +29,7 @@ class TestCredentials(unittest.TestCase):
         will use assertEqual to assertain if the length of credentials class variable is
         equal to one(1)        
         """
-        self.creadentials_test.save_credential()
+        self.credentials_test.save_credential()
         self.assertEqual(len(Credentials.credentials), 1)
 
     def test_save_multiple_credentials(self):
@@ -39,12 +39,28 @@ class TestCredentials(unittest.TestCase):
         length to assertain if it's equal to three(3)
         This method takes in an instance.
         """
-        self.creadentials_test.save_credential()
+        self.credentials_test.save_credential()
         test_lucas_credential = Credentials("Lucas Abraham", "Bingo", "0712")
         test_lucas_credential.save_credential()
         test_sharon_credential = Credentials("Sharoon", "Gmail", "8901")
         test_sharon_credential.save_credential()
         self.assertEqual(len(Credentials.credentials), 3)
+
+    def test_delete_individual_credential(self):
+        """
+        This method tests to check if delete_credential if called on specific
+        instance is capable of removing that instance from credentials class variable list
+        """
+        self.credentials_test.save_credential()
+        test_lucas_credential = Credentials("Lucas Abraham", "Bingo", "0712")
+        test_lucas_credential.save_credential()
+        test_sharon_credential = Credentials("Sharoon", "Gmail", "8901")
+        test_sharon_credential.save_credential()
+        test_sharon_credential.delete_credential()
+        self.assertEqual(len(Credentials.credentials), 2)
+
+    def test_
+
 
 
 if __name__ == "__main__":
