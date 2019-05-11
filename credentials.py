@@ -20,3 +20,11 @@ class Credentials:
         to the class variable, credentials.
         """
         __class__.credentials.append(self)
+
+    def delete_individual_credential(self):
+        """
+        This method takes in an instance that it's called on
+        and calls in the remove method on class variable, credentials
+        with that particular instance passed as a parameter
+        """
+        __class__.credentials.remove(self)
