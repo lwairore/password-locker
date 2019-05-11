@@ -3,7 +3,7 @@ from credentials import Credentials
 
 
 class TestCredentials(unittest.TestCase):
-    
+
     """
     Define a TestCredentials subclass that inherits properties and behaviours from
     unittest.TestCase superclass above.
@@ -14,6 +14,11 @@ class TestCredentials(unittest.TestCase):
     def setUp(self):
         self.creadentials_test = Credentials("lwairore", "Yahoo", "4280")
 
-
+    def tearDown(self):
+        """
+        tearDown() method will empty credentials class variable after every 
+        test.
+        """
+        Credentials.credentials = []
 
     
