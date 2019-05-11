@@ -71,8 +71,8 @@ class TestCredentials(unittest.TestCase):
         test_sharon_credential.save_credential()
         test_sharon_credential.delete_all_credentials()
         self.assertEqual(len(Credentials.credentials), 0)
-
-    def test_credential_exist(self):
+    
+    def test_find_credential_by_account_name(self):
         """
         This method attempts to search credentials detail via accountname.
         """
@@ -82,7 +82,34 @@ class TestCredentials(unittest.TestCase):
         test_sharon_credential = Credentials("Sharoon", "Gmail", "8901")
         test_sharon_credential.save_credential()
         found_credential = Credentials.find_account_name("Gmail")
-        self.assertEqual(found_credential, test_sharon_credential.account_name)
+        self.assertEqual(found_credential.account_name, test_sharon_credential.account_name)
+
+    def test_credential_exist(self):
+        """
+        This method takes in account-name and searches in 
+        the class variable credentials of Credentials class and returns a bool value true if it
+        exists and False if it doesn't exist
+        """
+        self.credentials_test.save_credential()
+        test_lucas_credential = Credentials("Lucas Abraham", "Bingo", "0712")
+        test_lucas_credential.save_credential()
+        test_sharon_credential = Credentials("Sharoon", "Gmail", "8901")
+        test_sharon_credential.save_credential()
+        credential_exists = Credentials.credential_exists("Bingo")
+        self.assertTrue(credential_exists)
+
+    def test_display_all_credentials(self):
+        """
+        This method calls save_credential() method on; credentials_test, test_lucas_credential,test_sharon_credential
+        and asserts the return value returnedby calling display_credentials() class method is the same value
+        with that that is contained on credentials class variable
+        """
+        self.credentials_test.save_credential()
+        test_lucas_credential = Credentials("Lucas Abraham", "Bingo", "0712")
+        test_lucas_credential.save_credential()
+        test_sharon_credential = Credentials("Sharoon", "Gmail", "8901")
+        test_sharon_credential.save_credential()
+        self.assertEqual(Credentials.display_credentials(), Credentials.credentials)
 
 
 
