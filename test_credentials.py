@@ -1,5 +1,6 @@
 import unittest
 from credentials import Credentials
+import pyperclip
 
 
 class TestCredentials(unittest.TestCase):
@@ -117,8 +118,19 @@ class TestCredentials(unittest.TestCase):
         value that it copies to the actual value
         """
         test_lucas_credential = Credentials("Lucas Abraham", "Bingo", "0712")
+        test_lucas_credential.save_credential()
         Credentials.copy_user_name("Bingo")
         self.assertEqual(test_lucas_credential.user_name, pyperclip.paste())
+
+    def test_copy_account_name(self):
+        """
+        This method tests to see if by calling copy_account_name() class
+        method on Credentials class by passing an account-name will copy respective account-name
+        """
+        test_sharon_credential = Credentials("Sharoon", "Gmail", "8901")
+        test_sharon_credential.save_credential()
+        Credentials.copy_account_name("Gmail")
+        self.assertEqual(test_sharon_credential.account_name, pyperclip.paste())
 
 
 
