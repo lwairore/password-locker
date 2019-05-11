@@ -72,6 +72,18 @@ class TestCredentials(unittest.TestCase):
         test_sharon_credential.delete_all_credentials()
         self.assertEqual(len(Credentials.credentials), 0)
 
+    def test_credential_exist(self):
+        """
+        This method attempts to search credentials detail via accountname.
+        """
+        self.credentials_test.save_credential()
+        test_lucas_credential = Credentials("Lucas Abraham", "Bingo", "0712")
+        test_lucas_credential.save_credential()
+        test_sharon_credential = Credentials("Sharoon", "Gmail", "8901")
+        test_sharon_credential.save_credential()
+        found_credential = Credentials.find_account_name("Gmail")
+        self.assertEqual(found_credential, test_sharon_credential.account_name)
+
 
 
 if __name__ == "__main__":
