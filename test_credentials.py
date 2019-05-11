@@ -72,7 +72,7 @@ class TestCredentials(unittest.TestCase):
         test_sharon_credential.save_credential()
         test_sharon_credential.delete_all_credentials()
         self.assertEqual(len(Credentials.credentials), 0)
-    
+
     def test_find_credential_by_account_name(self):
         """
         This method attempts to search credentials detail via accountname.
@@ -83,7 +83,8 @@ class TestCredentials(unittest.TestCase):
         test_sharon_credential = Credentials("Sharoon", "Gmail", "8901")
         test_sharon_credential.save_credential()
         found_credential = Credentials.find_account_name("Gmail")
-        self.assertEqual(found_credential.account_name, test_sharon_credential.account_name)
+        self.assertEqual(found_credential.account_name,
+                         test_sharon_credential.account_name)
 
     def test_credential_exist(self):
         """
@@ -110,7 +111,8 @@ class TestCredentials(unittest.TestCase):
         test_lucas_credential.save_credential()
         test_sharon_credential = Credentials("Sharoon", "Gmail", "8901")
         test_sharon_credential.save_credential()
-        self.assertEqual(Credentials.display_credentials(), Credentials.credentials)
+        self.assertEqual(Credentials.display_credentials(),
+                         Credentials.credentials)
 
     def test_copy_user_name(self):
         """
@@ -130,7 +132,8 @@ class TestCredentials(unittest.TestCase):
         test_sharon_credential = Credentials("Sharoon", "Gmail", "8901")
         test_sharon_credential.save_credential()
         Credentials.copy_account_name("Gmail")
-        self.assertEqual(test_sharon_credential.account_name, pyperclip.paste())
+        self.assertEqual(test_sharon_credential.account_name,
+                         pyperclip.paste())
 
     def test_copy_password(self):
         """
@@ -138,7 +141,7 @@ class TestCredentials(unittest.TestCase):
         method with the value of password key on credential_test
         """
         self.credentials_test.save_credential()
-        Credentials.test_copy_password("Gmail")
+        Credentials.copy_password("Yahoo")
         self.assertEqual(self.credentials_test.password, pyperclip.paste())
 
 
