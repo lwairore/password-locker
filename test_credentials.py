@@ -132,6 +132,14 @@ class TestCredentials(unittest.TestCase):
         Credentials.copy_account_name("Gmail")
         self.assertEqual(test_sharon_credential.account_name, pyperclip.paste())
 
+    def test_copy_password(self):
+        """
+        This method compares the value stored by pyperclip.copy()
+        method with the value of password key on credential_test
+        """
+        self.credentials_test.save_credential()
+        Credentials.test_copy_password("Gmail")
+        self.assertEqual(self.credentials_test.password, pyperclip.paste())
 
 
 if __name__ == "__main__":
