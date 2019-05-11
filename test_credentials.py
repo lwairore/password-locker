@@ -28,11 +28,23 @@ class TestCredentials(unittest.TestCase):
         that will also pass in that instance as self.Finally, these method
         will use assertEqual to assertain if the length of credentials class variable is
         equal to one(1)        
-        """    
+        """
         self.creadentials_test.save_credential()
         self.assertEqual(len(Credentials.credentials), 1)
 
-
+    def test_save_multiple_credentials(self):
+        """
+        This method test to assertain if a save_credential() method can
+        save append multiple instances to Credential's class variable by comparing it's actual
+        length to assertain if it's equal to three(3)
+        This method takes in an instance.
+        """
+        self.creadentials_test.save_credential()
+        test_lucas_credential = Credentials("Lucas Abraham", "Bingo", "0712")
+        test_lucas_credential.save_credential()
+        test_sharon_credential = Credentials("Sharoon", "Gmail", "8901")
+        test_sharon_credential.save_credential()
+        self.assertEqual(len(Credentials.credentials), 3)
 
 
 if __name__ == "__main__":
