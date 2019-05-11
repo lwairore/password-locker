@@ -34,4 +34,18 @@ class Credentials:
         This method empties the class variable, credentials when it is called.
         """
         __class__.credentials = []
+
+    @classmethod
+    def find_account_name(cls, account_name):
+        """
+        This method takes in class and account_name.
+        This method uses a for loop to loop throught the content of class
+        variable, credentials and finally checks if either of the values
+        that are returned are equal to account_name passed in.
+        """
+        for credential in cls.credentials:
+            if credential.account_name == account_name:
+                return credential
+
+
     
