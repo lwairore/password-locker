@@ -56,10 +56,21 @@ class TestCredentials(unittest.TestCase):
         test_lucas_credential.save_credential()
         test_sharon_credential = Credentials("Sharoon", "Gmail", "8901")
         test_sharon_credential.save_credential()
-        test_sharon_credential.delete_credential()
+        test_sharon_credential.delete_individual_credential()
         self.assertEqual(len(Credentials.credentials), 2)
 
-    def test_
+    def test_delete_all_credentials(self):
+        """
+        This method tests to see if by calling delete_multiple_credentials()
+        method does empty the class variable, credentials
+        """
+        self.credentials_test.save_credential()
+        test_lucas_credential = Credentials("Lucas Abraham", "Bingo", "0712")
+        test_lucas_credential.save_credential()
+        test_sharon_credential = Credentials("Sharoon", "Gmail", "8901")
+        test_sharon_credential.save_credential()
+        test_sharon_credential.delete_all_credentials()
+        self.assertEqual(len(Credentials.credentials), 0)
 
 
 
