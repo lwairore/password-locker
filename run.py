@@ -56,6 +56,15 @@ def credential_exist(account_name):
     return Credentials.credential_exists(account_name)
 
 
+def copy_account_name(account_name):
+    """
+    This function copies account_name to the clipboard by calling
+    copy_account_name() class method and by passing to it the account_name that 
+    the user ishes to copy.
+    """
+    return Credentials.copy_account_name(account_name)
+
+
 def display_credentials():
     """
     These function calls display_credentials() class method on Credentials.
