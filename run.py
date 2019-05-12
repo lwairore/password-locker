@@ -56,6 +56,14 @@ def credential_exist(account_name):
     return Credentials.credential_exists(account_name)
 
 
+def display_credentials():
+    """
+    These function calls display_credentials() class method on Credentials.
+    These function returns all the instances key values when called.
+    """
+    return Credentials.display_credentials()
+
+
 def delete_individual_credential(new_credential):
     """
     This function deletes any new_credential instance that is
@@ -72,4 +80,3 @@ def delete_all_credentials(new_credential):
     execute.
     """
     new_credential.delete_all_credentials()
-    
