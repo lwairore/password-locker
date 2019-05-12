@@ -153,7 +153,7 @@ def main():
     print(end="\n")
     print("Account successfully created! Kindly, now login with \"lg\" shortcode.")
     short_code = input(
-        "Almost there...Login shortcode \"lg\" - login ").lower()
+        "Almost there...Login shortcode \"lg\" - login \n ===>").lower()
     print(end="\n")
     if short_code == "lg" or login_short_code == "login":
         print("LOGIN")
@@ -183,7 +183,7 @@ def main():
                 print("CREDENTIALS")
                 print("-" * 10)
                 credential_short_code = input(
-                    "To navigate through your credentials use the following short codes: \n cc - add new credential \n delc delete credential \n fc - find credential \n cp - copy credentials: \n ==> ").lower()
+                    "To navigate through your credentials use the following short codes: \n cc - add new credential \n dc - display credentials \n delc - delete credential \n fc - find credential \n cp - copy credentials: \n ==> ").lower()
                 if credential_short_code == "cc":
                     print(end="\n")
                     print("ADD NEW CREDENTIAL")
@@ -205,7 +205,7 @@ def main():
                         password_auto_generate_option = input(
                             "Would you like to have your password auto-generated? y/n: ").lower()
                         if password_auto_generate_option == "n":
-                            password = input("Please enter your password: \n")
+                            password = input("Please enter your password: ")
                         else:
                             password_characters = input(
                                 "Select password charcters: \n n - Password to purely contain numbers \n m - Alpha-numerics password \n ===> ").lower()
@@ -251,7 +251,34 @@ def main():
                         print("{} account has been discarded. Switching to home.".format(
                             credential_account_name))
 
-                
+                elif credential_short_code == "dc":
+                    print(end="\n")
+                    if display_credentials():
+                        print("List of your credentials: ")
+                        print("-" * 28)
+                        for credential in display_credentials():
+                            print("Account-name: {}".format(credential.account_name))
+                            print("Username    : {}".format(credential.user_name))
+                            print("Password    : {}".format(credential.password))
+                    else: 
+                        print("You don't seem to have any credentials saved!")    
+                elif credential_short_code == "fc":
+                    print(end="\n")
+                    print("FIND ACCOUNT DETAILS")
+                    print("-" * 20)
+                    search_by_account_name = input("Please enter the account you want to search for: \n ===> ")
+                    if credential_exist(search_by_account_name):
+                        found_credential = find_credential(search_by_account_name)
+                        print("Search results")
+                        print("*" * 15)
+                        print("Account-name: {}".format(found_credential.account_name))
+                        print("User-name   : {}".format(found_credential.user_name))
+                        print("Password    : {}".format(found_credential.password))
+                        print(end="\n")
+                    else:
+                        print("{} account does not exist! Are you sure you typed the account-name correctly?".format(search_by_account_name))
+                        
+
 
     print(end="\n")
 
