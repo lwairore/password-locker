@@ -136,6 +136,41 @@ def main():
     print("\nConfirm Password-Locker Password:")
     print("-" * 31)
     confirm_password_locker_login_password = getpass.getpass("Please confirm your new password again? ")
+    while True:
+        if password_locker_login_password != confirm_password_locker_login_password:
+            print("PASSWORD MISMATCH. Please confirm your password correctly!")
+            confirm_password_locker_login_password = getpass.getpass("Please confirm your new password again? ")
+        else:
+            print("Password successfully created! ")
+            break 
+    print(end="\n")
+    print("Account successfully created! Kindly, now login with \"lg\" shortcode.")
+    login_short_code = input("Almost there...Login shortcode \"lg\" - login ")
+    if login_short_code == "lg" or login_short_code == "login":
+        print("LOGIN")
+        print("-" * 5)
+        print("Username:")
+        print("-" * 8)
+        login_username = input("Please enter your Password-Locker username: ")
+        login_password = getpass.getpass("Please enter your Password-Locker password: ")
+        while True:
+            if (password_locker_username != login_username) or (password_locker_login_password != login_password):
+                print("Incorrect username or password! ")
+                login_username = input("Please enter your Password-Locker username again: ")
+                login_password = getpass.getpass("Please enter your Password-Locker password again: ")
+            else:
+                print("Logging in...")
+                break 
+
+            
+
+            
+
+
+
+    print(end="\n")
+    
+        
     
 
 if __name__ == "__main__":
