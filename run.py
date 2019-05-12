@@ -54,4 +54,14 @@ def credential_exist(account_name):
     class atrribute credentials.
     """
     return Credentials.credential_exists(account_name)
-    
+
+
+def delete_individual_credential(new_credential):
+    """
+    This function deletes any new_credential instance that is
+    instantiated. By passing the instance to delete_credential() class method of class Credentials.
+    Returns a NoneType when called. 
+    """
+    new_credential.delete_credential()
+
+
