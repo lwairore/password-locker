@@ -222,7 +222,7 @@ def main():
                                     generated_password = int("".join(s))
                                     return generated_password
                                 print(end="\n")
-                                print("Your auto-generated numeric password of length {} is: \n {}".format(
+                                print("Your auto-generated numeric password of length {} is: {}".format(
                                     password_length, furnish(random_password)))
                                 credential_password = furnish(random_password)
                             else:
@@ -236,7 +236,7 @@ def main():
                                 time.sleep(.300)
                                 print("Displaying password...")
                                 time.sleep(.300)
-                                print("Your auto-generated alpha-numeric password of length {} is: \n {}".format(
+                                print("Your auto-generated alpha-numeric password of length {} is:  {}".format(
                                     password_length, password))
                                 credential_password = password
                     save_option = input(
@@ -277,6 +277,29 @@ def main():
                         print(end="\n")
                     else:
                         print("{} account does not exist! Are you sure you typed the account-name correctly?".format(search_by_account_name))
+                elif credential_short_code == "cp":
+                    print(end="\n") 
+                    select_account_name = input("Please enter account-name to copy it's details? ")
+                    if credential_exist(select_account_name):
+                        copy_choices = input("What would you like to copy from {}? \n pd - password \n us - user-name \n ac - account-name \n ===> ".format(select_account_name)).lower()
+                        if copy_choices == "us":
+                            copy_user_name(select_account_name)
+                            print("Usename successfully copied to the clipboard!")
+                            print(end="\n")
+                        elif copy_choices == "pd":
+                            copy_password(select_account_name)
+                            print("Password successfully copied to the clipboard!")
+                            print(end="\n")
+                        elif copy_choices == "ac":
+                            copy_account_name(select_account_name)
+                            print("Account-name successfully copied to the clipboard!")
+                            print(end="\n")
+                        else:
+                            print("Option does not exist!")
+                            print(end="\n")
+                    else: 
+                        print("{} account does not exist in your credentials!".format(select_account_name))
+                        print(end="\n")
                         
 
 
