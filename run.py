@@ -6,6 +6,7 @@ beforehand in the terminal.
 """
 from credentials import Credentials
 from user import User
+import getpass
 
 
 def create_new_credential(user_name, account_name, passsword):
@@ -114,19 +115,28 @@ def main():
     print("EVERYONE NEEDS A PASSWORD MANAGER")
     print("_" * 33)
     print("Just above every website wants you to create a user account and log in with a \npassword, from fan-fiction discussion sites to megabanks. When you have a \nhundred or more of these, the human memory can't keep up. One simple \nsolution is to just the simplest words and phrases as passwords, \nsomething associated with the site, like \"mybank\" for your \nonline bank. Another is to gin up just one strong, \ncomplicated password and use it everywhere. We have \na name for folks who rely on either of these two techniques. \nWe call them victims, victims of identity theft. The smart user \ndoesn't fall for either of these traps, instead relying on a password manager \nto create and remember a strong, unique password for every website.\n")
-    real_name = input("What name would you like me to call Sir/Madam, can get quite annoying \nme calling you \"user\" each time you login, don't you agree: ")
+    real_name = input(
+        "What name would you like me to call Sir/Madam, can get quite annoying \nme calling you \"user\" each time you login, don't you agree: ")
     if real_name:
-        print("--->Hello, {}. That sounds proper now!".format(real_name))
+        print("--->HELLO, {}. That sounds proper now!".format(real_name))
     else:
         real_name = "User"
-        print("--->\"User\" name shall it be! ")
-
+        print("--->\"User\" name shall it be!")
+    print(end="\n")
+    print("CREATE ACCOUNT")
+    print("-" * 14)
+    print("Please setup with us you Password-Locker inorder for us to 100 percent guarantee you \nthat it will be only you who will only be able to see your credentials.\n")
+    print("Create Password-Locker Username:")
+    print("-" * 31)
+    password_locker_username = input("What user-name would you like to login with? ")
+    print(end="\n") 
+    print("Create Password-Locker Password:")
+    print("-" * 31)
+    password_locker_login_password = getpass.getpass("...And what password would you like to use? ")
+    print("\nConfirm Password-Locker Password:")
+    print("-" * 31)
+    confirm_password_locker_login_password = getpass.getpass("Please confirm your new password again? ")
     
-    
-    
-
-
-
 
 if __name__ == "__main__":
     """
