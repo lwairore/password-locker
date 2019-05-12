@@ -11,3 +11,5 @@ class User:
         Initializes all the required parameters for 
         all users.
         """
+        self.name = name
+        self.login_password = login_password
