@@ -145,8 +145,9 @@ def main():
             break 
     print(end="\n")
     print("Account successfully created! Kindly, now login with \"lg\" shortcode.")
-    login_short_code = input("Almost there...Login shortcode \"lg\" - login ")
-    if login_short_code == "lg" or login_short_code == "login":
+    short_code = input("Almost there...Login shortcode \"lg\" - login ").lower()
+    print(end="\n")
+    if short_code == "lg" or login_short_code == "login":
         print("LOGIN")
         print("-" * 5)
         print("Username:")
@@ -162,7 +163,17 @@ def main():
                 print("Logging in...")
                 break 
 
-            
+        print(end="\n")
+        short_code = input("You can access: credentials via \"sc\" ==> ").lower()
+        print(end="\n")
+        if short_code == "sc":
+           while True:
+               print("CREDENTIALS")
+               print("-" * 10)
+               credential_short_code = input("To navigate through your credentials use the following short codes: \n cc - add new credential \n delc delete credential \n fc - find credential \n cp - copy credentials: \n ==> ").lower()
+                              
+         
+
 
             
 
