@@ -43,3 +43,15 @@ def find_credential(account_name):
     matched any account_names on class variable, credentials.
     """
     return Credentials.find_account_name(account_name)
+
+
+def credential_exist(account_name):
+    """
+    This function takes in account_name as its argument.
+    Calls credential_exist() class method on Credential
+    class and takes in account_name as its argument.
+    Returns a bool value, True if account_name matches any in 
+    class atrribute credentials.
+    """
+    return Credentials.credential_exists(account_name)
+    
