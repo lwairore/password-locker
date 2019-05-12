@@ -32,3 +32,14 @@ def save_new_credential(new_credential):
     on new_credential instance.
     """
     new_credential.save_credential()
+
+
+def find_credential(account_name):
+    """
+    This function takes in one argument, account_name.
+    Calls find_account_name() class method of Credential on Credential and passing
+    to it account_name argument. 
+    Returns an instance of that account_name if the account_name
+    matched any account_names on class variable, credentials.
+    """
+    return Credentials.find_account_name(account_name)
