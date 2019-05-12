@@ -65,3 +65,11 @@ def delete_individual_credential(new_credential):
     new_credential.delete_credential()
 
 
+def delete_all_credentials(new_credential):
+    """
+    This function deletes all credentials if called.
+    Requires atleast one argument new_credential for it to 
+    execute.
+    """
+    new_credential.delete_all_credentials()
+    
