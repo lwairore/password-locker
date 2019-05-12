@@ -113,7 +113,15 @@ def main():
     """
     print("EVERYONE NEEDS A PASSWORD MANAGER")
     print("_" * 33)
-    print("Just above every website wants you to create a user account and log in with a \npassword, from fan-fiction discussion sites to megabanks. When you have a \nhundred or more of these, the human memory can't keep up. One simple \nsolution is to just the simplest words and phrases as passwords, \nsomething associated with the site, like \"mybank\" for your \nonline bank. Another is to gin up just one strong, \ncomplicated password and use it everywhere. We have \na name for folks who rely on either of these two techniques. \nWe call them victims, victims of identity theft. The smart user \ndoesn't fall for either of these traps, instead relying on a password manager \nto create and remember a strong, unique password for every website.")
+    print("Just above every website wants you to create a user account and log in with a \npassword, from fan-fiction discussion sites to megabanks. When you have a \nhundred or more of these, the human memory can't keep up. One simple \nsolution is to just the simplest words and phrases as passwords, \nsomething associated with the site, like \"mybank\" for your \nonline bank. Another is to gin up just one strong, \ncomplicated password and use it everywhere. We have \na name for folks who rely on either of these two techniques. \nWe call them victims, victims of identity theft. The smart user \ndoesn't fall for either of these traps, instead relying on a password manager \nto create and remember a strong, unique password for every website.\n")
+    real_name = input("What name would you like me to call Sir/Madam, can get quite annoying \nme calling you \"user\" each time you login, don't you agree: ")
+    if real_name:
+        print("--->Hello, {}. That sounds proper now!".format(real_name))
+    else:
+        real_name = "User"
+        print("--->\"User\" name shall it be! ")
+
+    
     
     
 
