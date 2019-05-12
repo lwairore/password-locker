@@ -4,5 +4,12 @@
 standalone executable without typing python3.6
 beforehand in the terminal.
 """
+from credentials import Credentials
 
 
+def create_new_credential(user_name, account_name, passsword):
+    """
+    This function return a new instance when it is called.
+    """
+    new_credential = Credentials(user_name, account_name, password)
+    return new_credential
