@@ -14,5 +14,8 @@ class TestUser(unittest.TestCase):
         """
         self.new_user = User("john", "8754lope")
 
-    # def tearDown(self):
-    #     User.users = []
+    def tearDown(self):
+        """
+        This method empties users class variable of class User.
+        """
+        User.users = []
