@@ -7,9 +7,12 @@ beforehand in the terminal.
 from credentials import Credentials
 from user import User
 import getpass
+import random
+import time
+import string
 
 
-def create_new_credential(user_name, account_name, passsword):
+def create_new_credential(user_name, account_name, password):
     """
     This function return a new instance when it is called.
     """
@@ -128,24 +131,29 @@ def main():
     print("Please setup with us you Password-Locker inorder for us to 100 percent guarantee you \nthat it will be only you who will only be able to see your credentials.\n")
     print("Create Password-Locker Username:")
     print("-" * 31)
-    password_locker_username = input("What user-name would you like to login with? ")
-    print(end="\n") 
+    password_locker_username = input(
+        "What user-name would you like to login with? ")
+    print(end="\n")
     print("Create Password-Locker Password:")
     print("-" * 31)
-    password_locker_login_password = getpass.getpass("...And what password would you like to use? ")
+    password_locker_login_password = getpass.getpass(
+        "...And what password would you like to use? ")
     print("\nConfirm Password-Locker Password:")
     print("-" * 31)
-    confirm_password_locker_login_password = getpass.getpass("Please confirm your new password again? ")
+    confirm_password_locker_login_password = getpass.getpass(
+        "Please confirm your new password again? ")
     while True:
         if password_locker_login_password != confirm_password_locker_login_password:
             print("PASSWORD MISMATCH. Please confirm your password correctly!")
-            confirm_password_locker_login_password = getpass.getpass("Please confirm your new password again? ")
+            confirm_password_locker_login_password = getpass.getpass(
+                "Please confirm your new password again? ")
         else:
             print("Password successfully created! ")
-            break 
+            break
     print(end="\n")
     print("Account successfully created! Kindly, now login with \"lg\" shortcode.")
-    short_code = input("Almost there...Login shortcode \"lg\" - login ").lower()
+    short_code = input(
+        "Almost there...Login shortcode \"lg\" - login ").lower()
     print(end="\n")
     if short_code == "lg" or login_short_code == "login":
         print("LOGIN")
@@ -153,36 +161,100 @@ def main():
         print("Username:")
         print("-" * 8)
         login_username = input("Please enter your Password-Locker username: ")
-        login_password = getpass.getpass("Please enter your Password-Locker password: ")
+        login_password = getpass.getpass(
+            "Please enter your Password-Locker password: ")
         while True:
             if (password_locker_username != login_username) or (password_locker_login_password != login_password):
                 print("Incorrect username or password! ")
-                login_username = input("Please enter your Password-Locker username again: ")
-                login_password = getpass.getpass("Please enter your Password-Locker password again: ")
+                login_username = input(
+                    "Please enter your Password-Locker username again: ")
+                login_password = getpass.getpass(
+                    "Please enter your Password-Locker password again: ")
             else:
                 print("Logging in...")
-                break 
+                break
 
         print(end="\n")
-        short_code = input("You can access: credentials via \"sc\" ==> ").lower()
+        short_code = input(
+            "You can access: credentials via \"sc\" ==> ").lower()
         print(end="\n")
         if short_code == "sc":
-           while True:
-               print("CREDENTIALS")
-               print("-" * 10)
-               credential_short_code = input("To navigate through your credentials use the following short codes: \n cc - add new credential \n delc delete credential \n fc - find credential \n cp - copy credentials: \n ==> ").lower()
-                              
-         
+            while True:
+                print("CREDENTIALS")
+                print("-" * 10)
+                credential_short_code = input(
+                    "To navigate through your credentials use the following short codes: \n cc - add new credential \n delc delete credential \n fc - find credential \n cp - copy credentials: \n ==> ").lower()
+                if credential_short_code == "cc":
+                    print(end="\n")
+                    print("ADD NEW CREDENTIAL")
+                    account_short_code = input(
+                        "Is the account credentials arleady existing: \n y - for already exists \n n - new account credentials \n ==> ").lower()
+                    if account_short_code == "y":
+                        credential_account_name = input(
+                            "What is the name of the account you want to add? ")
+                        credential_user_name = input(
+                            "What user-name do you use on {}? ".format(credential_account_name))
+                        credential_password = input(
+                            "What password do you use on {}? ".format(credential_account_name))
+                        
+                    else:
+                        credential_account_name = input(
+                            "What is the name of the account? ")
+                        credential_user_name = input(
+                            "What user-name do you want to use on {}? ".format(credential_account_name))
+                        password_auto_generate_option = input(
+                            "Would you like to have your password auto-generated? y/n: ").lower()
+                        if password_auto_generate_option == "n":
+                            password = input("Please enter your password: \n")
+                        else:
+                            password_characters = input(
+                                "Select password charcters: \n n - Password to purely contain numbers \n m - Alpha-numerics password \n ===> ").lower()
+                            if password_characters == "n":
+                                password_length = input(
+                                    "What length of password would you like to have? ")
+                                random_password = []
+                                for i in range(0, int(password_length)):
+                                    random_password.append(
+                                        random.randint(0, 9))
 
+                                def furnish(random_password):
+                                    s = [str(i) for i in random_password]
+                                    generated_password = int("".join(s))
+                                    return generated_password
+                                print(end="\n")
+                                print("Your auto-generated numeric password of length {} is: \n {}".format(
+                                    password_length, furnish(random_password)))
+                                credential_password = furnish(random_password)
+                            else:
+                                alphabet = string.ascii_letters + string.digits
+                                password_length = input(
+                                    "What length of password would you like to have? ")
+                                print("Setting up your password length...")
+                                time.sleep(2)
+                                password = "".join(random.choice(alphabet)for i in range(int(password_length)))
+                                print("Generating password...")
+                                time.sleep(.300)
+                                print("Displaying password...")
+                                time.sleep(.300)
+                                print("Your auto-generated alpha-numeric password of length {} is: \n {}".format(
+                                    password_length, password))
+                                credential_password = password
+                    save_option = input(
+                        "Would you like to add {}? y/n ".format(credential_account_name)).lower()
+                    if save_option == "y":
+                        save_new_credential(create_new_credential(
+                            credential_user_name, credential_account_name, credential_password))
+                        print("--" * 10)
+                        print("{} account has been successfully saved!".format(
+                            credential_account_name))
+                    else:
+                        print("{} account has been discarded. Switching to home.".format(
+                            credential_account_name))
 
-            
-
-
+                
 
     print(end="\n")
-    
-        
-    
+
 
 if __name__ == "__main__":
     """
