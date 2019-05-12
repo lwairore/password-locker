@@ -24,3 +24,11 @@ def create_new_user(name, login_password):
     """
     new_user = User(name, login_password)
     return new_user
+
+
+def save_new_credential(new_credential):
+    """
+    This function calls save_credential() method of class Credential
+    on new_credential instance.
+    """
+    new_credential.save_credential()
