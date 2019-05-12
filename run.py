@@ -70,9 +70,15 @@ def copy_user_name(account_name):
     This function copies a username of the respective account_name if
     any is found.
     """
-    return Credentials.copy_account_name(account_name)
+    return Credentials.copy_user_name(account_name)
 
-    
+
+def copy_password(account_name):
+    """
+    This function copies password of respective account-name.
+    """
+    return Credentials.copy_password(account_name)
+
 
 
 def display_credentials():
