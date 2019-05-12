@@ -32,7 +32,8 @@ class Credentials:
         """
         __class__.credentials.remove(self)
 
-    def delete_all_credentials(self):
+    @classmethod
+    def delete_all_credentials(cls):
         """
         This method empties the class variable, credentials when it is called.
         """
